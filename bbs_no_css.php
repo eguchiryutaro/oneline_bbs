@@ -20,7 +20,7 @@
 	  $sql = 'SELECT * FROM `posts`;';
 
 	  //実行
-	  $stml = $dbh->prepare($sql);
+	  $stmt = $dbh->prepare($sql);
 	  $stmt->execute();
 
 	  //配列で取得したデータを格納
