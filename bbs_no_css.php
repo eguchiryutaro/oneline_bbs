@@ -1,8 +1,13 @@
 <?php
   // データベースに接続
-		$dsn = 'mysql:dbname=oneline_bbs;host=localhost';
-		$user = 'root';
-		$password = '';
+		// $dsn = 'mysql:dbname=LAA';
+		// $user = 'root';
+		// $password = '';
+
+		$dsn = 'mysql:dbname=LAA0854007-onelinebbs;host=mysql109.phy.lolipop.lan';
+		$user = 'LAA0854007';
+		$password = 'nidototsukawanai';
+
 		$dbh = new PDO($dsn, $user, $password);
 		$dbh->query('SET NAMES utf8');
 
