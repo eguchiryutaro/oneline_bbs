@@ -28,6 +28,7 @@
   //insert文実行
 		$stmt = $dbh->prepare($sql);
 		$stmt->execute();
+		｝
 
 	//SERECT文の実行
 	  //SQL文作成(SERECT文)
@@ -47,7 +48,6 @@
 	  //echo $rec('nickname');
 	  	$post_datas[] = $rec;
 	  }
-	}
 	  
 	  //データベースから切断
 			$dbh = null;
@@ -122,7 +122,6 @@
        <div class="col-md-8 content-margin-top">
         <div class="timeline-centered">
           <article class="timeline-entry">
-                <?php if (!empty($_POST)) {
                       foreach ($post_datas as $post_each) {?>
               <div class="timeline-entry-inner">
                   <div class="timeline-icon bg-success">
@@ -142,7 +141,7 @@
                       <p><?php echo $created; ?></p>
                   </div>
               </div>
-                  <?php }} ?>
+                  <?php } ?>
           </article>
 
           <article class="timeline-entry begin">
