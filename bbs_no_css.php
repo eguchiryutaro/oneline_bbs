@@ -66,7 +66,7 @@
   <link rel="stylesheet" href="assets/css/timeline.css">
   <link rel="stylesheet" href="assets/css/main.css">
 </head>
-<body style = "background-color:#ccc"">
+<body style = "background-color:#f0f8ff"">
   <!-- ナビゲーションバー -->
   <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
