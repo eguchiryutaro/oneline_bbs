@@ -1,12 +1,12 @@
 <?php
   // データベースに接続
-		// $dsn = 'mysql:dbname=LAA';
-		// $user = 'root';
-		// $password = '';
+		 $dsn = 'mysql:dbname=oneline_bbs;host=localhost';
+		 $user = 'root';
+		 $password = '';
 
-		$dsn = 'mysql:dbname=LAA0854007-onelinebbs;host=mysql109.phy.lolipop.lan';
-		$user = 'LAA0854007';
-		$password = 'nidototsukawanai';
+		// $dsn = 'mysql:dbname=LAA0854007-onelinebbs;host=mysql109.phy.lolipop.lan';
+		// $user = 'LAA0854007';
+		// $password = 'nidototsukawanai';
 
 		$dbh = new PDO($dsn, $user, $password);
 		$dbh->query('SET NAMES utf8');
@@ -28,11 +28,11 @@
   //insert文実行
 		$stmt = $dbh->prepare($sql);
 		$stmt->execute();
-		｝
+		}
 
 	//SERECT文の実行
-	  //SQL文作成(SERECT文)
-	  $sql = 'SELECT * FROM `posts` ORDER BY id DESC;';
+	//SQL文作成(SERECT文)
+		$sql = 'SELECT * FROM `posts` ORDER BY `id` DESC';
 
 	  //実行
 	  $stmt = $dbh->prepare($sql);
@@ -66,7 +66,7 @@
   <link rel="stylesheet" href="assets/css/timeline.css">
   <link rel="stylesheet" href="assets/css/main.css">
 </head>
-<body>
+<body style = "background-color:#ccc"">
   <!-- ナビゲーションバー -->
   <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
@@ -98,7 +98,7 @@
       <!-- 画面左側 -->
       <div class="col-md-4 content-margin-top">
         <!-- form部分 -->
-        <form action="bbs.php" method="post">
+        <form action="bbs_no_css.php" method="post">
           <!-- nickname -->
           <div class="form-group">
             <div class="input-group">
@@ -121,28 +121,30 @@
       <!-- 画面右側 -->
        <div class="col-md-8 content-margin-top">
         <div class="timeline-centered">
+
+        <?php foreach ($post_datas as $post_each) {?>
           <article class="timeline-entry">
-                      foreach ($post_datas as $post_each) {?>
               <div class="timeline-entry-inner">
                   <div class="timeline-icon bg-success">
                       <i class="entypo-feather"></i>
-                      <i class="fa fa-registered" aria-hidden="true"></i>
+                      <i class="fa fa-github-alt" aria-hidden="true"></i>
                   </div>
 
                   <div class="timeline-label">
                       <h2><a href="#"><?php echo $post_each['nickname'] . '<br>'; ?></a> <span><?php echo $post_each['comment'] . '<br>'; ?></span></h2>
                       <?php
                       //一旦日時型に変換(string型からDatetime型へ変換)
-                      $creasted = strtotime($post_each['created']);
+                      $created = strtotime($post_each['created']);
                       //書式を変換
-                      $creasted = dare('Y-m-d' ,$creasted);
+                      $created = date('Y-m-d' ,$created);
                       ?>
                       <!--p --><?php //echo $post_each['created'] . '<br>'; ?><!--/p --> 
                       <p><?php echo $created; ?></p>
+                      <a href="#" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-thumbs-up"></span> like</a>
                   </div>
               </div>
-                  <?php } ?>
           </article>
+          <?php } ?>
 
           <article class="timeline-entry begin">
               <div class="timeline-entry-inner">
